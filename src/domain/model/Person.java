@@ -21,15 +21,15 @@ public class Person {
     private String userid;
     private String password;
     public ROLE role;
-    public STATUS status;
+    public String status;
     
     public Person() {
         
     }
     
-    public Person(String firstname, String lastname, String userid, String password, ROLE role, STATUS status) {
+    public Person(String firstname, String lastname, String userid, String password, ROLE role, String status) {
         this.role = role;
-        this.status = status;
+        setStatus(status);
         setFirstname(firstname);
         setLastname(lastname);
         setUserid(userid);
@@ -44,23 +44,23 @@ public class Person {
         this.role = role;
     }
     
-    public void setStatus(STATUS status) {
+    public void setStatus(String status) {
         this.status = status;
     }
     
     public void setStatusString(String status) {
         switch (status.toLowerCase()) {
             case "online":
-                setStatus(STATUS.ONLINE);
+                setStatus("ONLINE");
                 break;
             case "offline":
-                setStatus(STATUS.OFFLINE);
+                setStatus("OFFLINE");
                 break;
             case "away":
-                setStatus(STATUS.AWAY);
+                setStatus("AWAY");
                 break;
             default:
-                throw new IllegalArgumentException("Wrong status, please choose between offline, online or away");
+                setStatus(status);
         }
     }
     
@@ -72,6 +72,9 @@ public class Person {
             case "administrator":
                 setRole(ROLE.ADMINISTRATOR);
                 break;
+            case "helpdesk":
+                setRole(ROLE.HELPDESK);
+                break;
             default:
                 throw new IllegalArgumentException("Wrong role, please type administrator or client");
         }
@@ -81,29 +84,20 @@ public class Person {
         if (this.role == ROLE.ADMINISTRATOR) {
             return "administrator";
         }
+        else if (this.role == ROLE.HELPDESK) {
+            return "helpdesk";
+        }
         else {
             return "client";
         }
     }
     
-   public String getStatusString() {
-    if (this.status == STATUS.OFFLINE) {
-        return "offline";
+    public String getStatus() {
+        return this.status;
     }
-    else if (this.status == STATUS.ONLINE) {
-        return "online";
-    }
-    else {
-        return "away";
-    }
-}
     
     public enum ROLE{
-        CLIENT,ADMINISTRATOR
-    }
-    
-    public enum STATUS{
-        ONLINE,OFFLINE,AWAY
+        CLIENT,ADMINISTRATOR,HELPDESK
     }
     
     public void setFirstname(String firstname) {

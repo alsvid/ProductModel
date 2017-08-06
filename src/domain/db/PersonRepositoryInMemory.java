@@ -20,8 +20,17 @@ public class PersonRepositoryInMemory {
     private ArrayList<Person> personlist = new ArrayList<>();
     
     public PersonRepositoryInMemory() {
-        Person admin = new Person("Brecht", "Theys", "brechttheys", "admin", Person.ROLE.ADMINISTRATOR, Person.STATUS.ONLINE);
+        Person admin = new Person("Brecht", "Theys", "brechttheys", "admin", Person.ROLE.ADMINISTRATOR, "ONLINE");
+        Person helpdesk1 = new Person("Danny", "Bridges", "Helpdesk-Danny", "helpdesk", Person.ROLE.HELPDESK, "ONLINE");
+        Person helpdesk2 = new Person("Chris", "Quinn", "Helpdesk-Chris", "helpdesk", Person.ROLE.HELPDESK, "OFFLINE");
+        Person helpdesk3 = new Person("Samuel", "Brimble", "Helpdesk-Sam", "helpdesk", Person.ROLE.HELPDESK, "BRB");
+        Person helpdesk4 = new Person("Redgy", "Noth", "Helpdesk-Redgy", "helpdesk", Person.ROLE.HELPDESK, "ONLINE");
+        
         personlist.add(admin);
+        personlist.add(helpdesk1);
+        personlist.add(helpdesk2);
+        personlist.add(helpdesk3);
+        personlist.add(helpdesk4);
     }
     
     public ArrayList<Person> getPersonlist() {
@@ -93,6 +102,16 @@ public class PersonRepositoryInMemory {
         byte[] salt = new byte[16];
         sr.nextBytes(salt);
         return salt;
+    }
+    
+    public ArrayList<Person> getAllHelpdeskMembers() {
+        ArrayList<Person> out = new ArrayList<>();
+        for (Person p : personlist) {
+            if (p.getRoleString().equals("helpdesk")) {
+                out.add(p);
+            }
+        }
+        return out;
     }
     
 }   
