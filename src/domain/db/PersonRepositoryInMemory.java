@@ -25,12 +25,13 @@ public class PersonRepositoryInMemory {
         Person helpdesk2 = new Person("Chris", "Quinn", "Helpdesk-Chris", "helpdesk", Person.ROLE.HELPDESK, "OFFLINE");
         Person helpdesk3 = new Person("Samuel", "Brimble", "Helpdesk-Sam", "helpdesk", Person.ROLE.HELPDESK, "BRB");
         Person helpdesk4 = new Person("Redgy", "Noth", "Helpdesk-Redgy", "helpdesk", Person.ROLE.HELPDESK, "ONLINE");
-        
+        Person client = new Person("Rach", "Mogumbé", "Rach", "client", Person.ROLE.CLIENT, "ONLINE");
         personlist.add(admin);
         personlist.add(helpdesk1);
         personlist.add(helpdesk2);
         personlist.add(helpdesk3);
         personlist.add(helpdesk4);
+        personlist.add(client);
     }
     
     public ArrayList<Person> getPersonlist() {
@@ -108,6 +109,16 @@ public class PersonRepositoryInMemory {
         ArrayList<Person> out = new ArrayList<>();
         for (Person p : personlist) {
             if (p.getRoleString().equals("helpdesk")) {
+                out.add(p);
+            }
+        }
+        return out;
+    }
+    
+    public ArrayList<Person> getAllAdministrators() {
+        ArrayList<Person> out = new ArrayList<>();
+        for (Person p : personlist) {
+            if (p.getRoleString().equals("administrator")) {
                 out.add(p);
             }
         }

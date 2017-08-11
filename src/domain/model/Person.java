@@ -158,4 +158,12 @@ public class Person {
         sr.nextBytes(salt);
         return salt;
     }
+    
+    public boolean isAdministrator() {
+        return this.getRole() == ROLE.ADMINISTRATOR;
+    }
+    
+    public boolean isHelpdesk() {
+        return this.getRole() == ROLE.HELPDESK;
+    }
 }

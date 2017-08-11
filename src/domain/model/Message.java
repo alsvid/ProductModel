@@ -14,8 +14,13 @@ public class Message {
     private String content;
     private String writer;
     
-    public Message(String writer, String content) {
+    public Message() {
         
+    }
+    
+    public Message(String writer, String content) {
+        setWriter(writer);
+        setContent(content);
     }
     
     public String getContent() {

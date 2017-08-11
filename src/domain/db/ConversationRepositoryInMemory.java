@@ -37,6 +37,7 @@ public class ConversationRepositoryInMemory {
         }
         return convo;
     }
+  
     
     public Conversation getConversation(Person p1, Person p2) {
         Conversation out = null;
@@ -49,5 +50,27 @@ public class ConversationRepositoryInMemory {
             }
 	}
 	return out;
+    }
+
+    
+    public void addConversation(Conversation convo) {
+        if (convo == null) throw new DbException("Conversation cannot be null when added to list");
+        this.conversationlist.add(convo);
+    }
+    
+    public void addMessageToConversationInList(Conversation convo,Message message) {
+        for (Conversation c : conversationlist) {
+            if (c.equals(convo)) {
+                c.addMessage(message);
+            }
+        }
+    }
+    
+    public void addMessageToConversation(Conversation convo, Message message) {
+		convo.addMessage(message);
+    }
+    
+    public ArrayList<Conversation> getConversationlist() {
+        return this.conversationlist;
     }
 }

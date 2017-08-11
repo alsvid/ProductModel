@@ -50,7 +50,10 @@ public class Conversation {
         this.messagelist.add(message);
     }
     
-    
+    @Override
+    public String toString() {
+        return "Conversation between " + person1.getUserid() + " and " + person2.getUserid();
+    }
     
     
 }
