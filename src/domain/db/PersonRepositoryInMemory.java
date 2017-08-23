@@ -21,12 +21,16 @@ public class PersonRepositoryInMemory {
     
     public PersonRepositoryInMemory() {
         Person admin = new Person("Brecht", "Theys", "brechttheys", "admin", Person.ROLE.ADMINISTRATOR, "ONLINE");
+        Person admin1 = new Person("Dries", "Moniers", "driesmoniers", "admin", Person.ROLE.ADMINISTRATOR, "AWAY");
+        Person admin2 = new Person("Lize", "Vermeers", "lizevermeers", "admin", Person.ROLE.ADMINISTRATOR, "OFFLINE");
         Person helpdesk1 = new Person("Danny", "Bridges", "Helpdesk-Danny", "helpdesk", Person.ROLE.HELPDESK, "ONLINE");
         Person helpdesk2 = new Person("Chris", "Quinn", "Helpdesk-Chris", "helpdesk", Person.ROLE.HELPDESK, "OFFLINE");
         Person helpdesk3 = new Person("Samuel", "Brimble", "Helpdesk-Sam", "helpdesk", Person.ROLE.HELPDESK, "BRB");
         Person helpdesk4 = new Person("Redgy", "Noth", "Helpdesk-Redgy", "helpdesk", Person.ROLE.HELPDESK, "ONLINE");
         Person client = new Person("Rach", "Mogumbé", "Rach", "client", Person.ROLE.CLIENT, "ONLINE");
         personlist.add(admin);
+        personlist.add(admin1);
+        personlist.add(admin2);
         personlist.add(helpdesk1);
         personlist.add(helpdesk2);
         personlist.add(helpdesk3);
